@@ -2,11 +2,15 @@
 ;;fix the status line color bug
 ;;(setq ns-use-srgb-colorspace nil)
 
-(setq powerline-default-separator 'arrow)
+;;fix the select-mode problem
+(delete-selection-mode 1)
 
-;;change the cursor style to bar
+;;setup ycmd-mode
+(add-hook 'c++-mode-hook 'ycmd-mode)
+(add-hook 'c-mode-hook 'ycmd-mode)
+(add-hook 'python-mode-hook 'ycmd-mode)
 
-(setq-default evil-insert-state-cursor 'bar)
+;;(add-to-list 'company-backends 'company-c-headers)
 
 (setq-default indent-tabs-mode nil) 	;; tab 改为插入空格
 (setq c-basic-offset 4) 							;; c c++ 缩进4个空格

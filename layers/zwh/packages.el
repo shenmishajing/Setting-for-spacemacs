@@ -30,7 +30,8 @@
 ;;; Code:
 
 (defconst zwh-packages
-  '(company)
+  '(company
+    company-c-headers)
   "The list of Lisp packages required by the zwh layer.
 
 Each entry is either:
@@ -61,5 +62,8 @@ Each entry is either:
 (defun zwh/post-init-company()
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
+
+(defun zwh/post-init-company-c-headers()
+  (add-to-list 'company-backends 'company-c-headers))
 
 ;;; packages.el ends here

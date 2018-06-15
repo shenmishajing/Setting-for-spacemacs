@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -40,7 +41,6 @@ values."
      ;; helm
      auto-completion
      (better-defaults :variables
-
                        better-defaults-move-to-end-of-code-first nil)
      emacs-lisp
      git
@@ -52,7 +52,11 @@ values."
      spell-checking
      syntax-checking
      osx
-     c-c++
+     (c-c++ :variables
+              c-c++-enable-clang-support t
+              c-c++-default-mode-for-headers 'c++-mode)
+     semantic
+     cscope
      ycmd
      ;; version-control
      zwh
@@ -321,6 +325,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   "fix the PATH warning bug"
   (setq exec-path-from-shell-arguments '("-l"))
+
   )
 
 (defun dotspacemacs/user-config ()
@@ -334,6 +339,20 @@ you should place your code here."
   (setq company-backends-c-mode-common '((company-c-headers
                                           company-ycmd
                                           company-dabbrev :with company-yasnippet)))
+
+  ;;change the cursor type to bar
+  (setq evil-emacs-state-cursor 'bar)
+
+  ;;set the powerline style
+  (setq powerline-default-separator 'arrow)
+
+  ;;setup ycmd-mode
+  (add-hook 'c++-mode-hook 'ycmd-mode)
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  (add-hook 'python-mode-hook 'ycmd-mode)
+  
+  (require 'company-ycmd)
+  (company-ycmd-setup)
 
   )
 
