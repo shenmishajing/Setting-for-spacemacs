@@ -5,11 +5,6 @@
 ;;fix the select-mode problem
 (delete-selection-mode 1)
 
-;;setup ycmd-mode
-(add-hook 'c++-mode-hook 'ycmd-mode)
-(add-hook 'c-mode-hook 'ycmd-mode)
-(add-hook 'python-mode-hook 'ycmd-mode)
-
 ;;(add-to-list 'company-backends 'company-c-headers)
 
 (setq-default indent-tabs-mode nil) 	;; tab 改为插入空格

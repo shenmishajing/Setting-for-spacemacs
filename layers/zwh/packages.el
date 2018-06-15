@@ -30,8 +30,8 @@
 ;;; Code:
 
 (defconst zwh-packages
-  '(company
-    company-c-headers)
+  '(company    irony
+    )
   "The list of Lisp packages required by the zwh layer.
 
 Each entry is either:
@@ -63,7 +63,12 @@ Each entry is either:
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
 
-(defun zwh/post-init-company-c-headers()
-  (add-to-list 'company-backends 'company-c-headers))
+(defun zwh/init-irony()
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  )
 
 ;;; packages.el ends here

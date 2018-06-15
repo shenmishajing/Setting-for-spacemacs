@@ -57,7 +57,6 @@ values."
               c-c++-default-mode-for-headers 'c++-mode)
      semantic
      cscope
-     ycmd
      ;; version-control
      zwh
      )
@@ -336,24 +335,17 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (setq company-backends-c-mode-common '((company-c-headers
-                                          company-ycmd
-                                          company-dabbrev :with company-yasnippet)))
-
   ;;change the cursor type to bar
   (setq evil-emacs-state-cursor 'bar)
 
   ;;set the powerline style
   (setq powerline-default-separator 'arrow)
 
-  ;;setup ycmd-mode
-  (add-hook 'c++-mode-hook 'ycmd-mode)
-  (add-hook 'c-mode-hook 'ycmd-mode)
-  (add-hook 'python-mode-hook 'ycmd-mode)
-  
-  (require 'company-ycmd)
-  (company-ycmd-setup)
+  ;; (add-hook 'c++-mode-hook 'irony-mode)
+  ;; (add-hook 'c-mode-hook 'irony-mode)
+  ;; (add-hook 'objc-mode-hook 'irony-mode)
 
+  ;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
