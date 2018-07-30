@@ -30,7 +30,9 @@
 ;;; Code:
 
 (defconst zwh-packages
-  '(company    irony
+  '(company
+    irony
+    yasnippet-snippets
     )
   "The list of Lisp packages required by the zwh layer.
 
@@ -61,7 +63,8 @@ Each entry is either:
 
 (defun zwh/post-init-company()
   (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0)
+  )
 
 (defun zwh/init-irony()
   (add-hook 'c++-mode-hook 'irony-mode)
@@ -69,6 +72,10 @@ Each entry is either:
   (add-hook 'objc-mode-hook 'irony-mode)
 
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  )
+
+(defun zwh/init-yasnippet-snippets()
+  (add-to-list 'yas-snippet-dirs "~/.emacs.d/elpa/yasnippet-snippets-20180616.1005/snippets/")
   )
 
 ;;; packages.el ends here

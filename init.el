@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -335,17 +336,16 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;;fix the stuck problem in elisp mode
+  (setq company-backends-emacs-lisp-mode '(company-bbdb company-eclim company-semantic company-clang company-xcode company-cmake company-files
+                                                        (company-dabbrev-code company-gtags company-etags company-keywords)
+                                                        company-oddmuse company-dabbrev))
+
   ;;change the cursor type to bar
   (setq evil-emacs-state-cursor 'bar)
 
   ;;set the powerline style
   (setq powerline-default-separator 'arrow)
-
-  ;; (add-hook 'c++-mode-hook 'irony-mode)
-  ;; (add-hook 'c-mode-hook 'irony-mode)
-  ;; (add-hook 'objc-mode-hook 'irony-mode)
-
-  ;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

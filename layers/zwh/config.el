@@ -11,3 +11,5 @@
 (setq c-basic-offset 4) 							;; c c++ 缩进4个空格
 (setq c-default-style "linux")				;; 没有这个 { } 就会瞎搞
 (setq default-tab-width 4)
+
+;; (define-key [remap backward-delete-char-untabify] 'backward-delete-char global-map)

@@ -9,3 +9,12 @@
   (define-key c++-mode-map [tab] 'clang-format-buffer))
 
 (global-set-key (kbd "C-c ;") 'iedit-mode)
+
+;;delete a tab size space when press DEL
+(global-set-key (kbd "DEL") 'backward-delete-char)
+
+;;add a space behind ", "
+(global-set-key (kbd ",")
+                #'(lambda ()
+                    (interactive)
+                    (insert ", ")))
