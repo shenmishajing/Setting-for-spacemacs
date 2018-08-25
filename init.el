@@ -40,7 +40,14 @@ values."
      ;; ----------------------------------------------------------------
      ivy
      ;; helm
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-return-key-behavior 'complete
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-complete-with-key-sequence nil
+                      auto-completion-complete-with-key-sequence-delay 0.1
+                      auto-completion-private-snippets-directory nil
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-sort-by-usage t)
      (better-defaults :variables
                        better-defaults-move-to-end-of-code-first nil)
      emacs-lisp
@@ -50,23 +57,25 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     (spell-checking :variables
+                     ispell-program-name "aspell"
+                     ispell-dictionary "american"
+                     spell-checking-enable-by-default nil)
      syntax-checking
      osx
      (c-c++ :variables
-              c-c++-enable-clang-support t
-              c-c++-default-mode-for-headers 'c++-mode)
+            c-c++-default-mode-for-headers 'c++-mode)
      semantic
      cscope
      ;; version-control
      zwh
+     irony
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ag
-                                      ag)
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -145,7 +154,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Meslo LG S for Powerline"
                                :size 18
                                :weight normal
                                :width normal
@@ -346,6 +355,10 @@ you should place your code here."
 
   ;;set the powerline style
   (setq powerline-default-separator 'arrow)
+
+  ;;change the default value of company variables
+  (setq-default company-idle-delay 0)
+  (setq-default company-minimum-prefix-length 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

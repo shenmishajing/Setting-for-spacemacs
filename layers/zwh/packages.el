@@ -30,10 +30,7 @@
 ;;; Code:
 
 (defconst zwh-packages
-  '(company
-    irony
-    yasnippet-snippets
-    )
+  '()
   "The list of Lisp packages required by the zwh layer.
 
 Each entry is either:
@@ -60,22 +57,5 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
-
-(defun zwh/post-init-company()
-  (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0)
-  )
-
-(defun zwh/init-irony()
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  )
-
-(defun zwh/init-yasnippet-snippets()
-  (add-to-list 'yas-snippet-dirs "~/.emacs.d/elpa/yasnippet-snippets-20180616.1005/snippets/")
-  )
 
 ;;; packages.el ends here
