@@ -52,7 +52,7 @@ values."
                        better-defaults-move-to-end-of-code-first nil)
      emacs-lisp
      git
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      org
      (shell :variables
             shell-default-height 30
@@ -65,6 +65,12 @@ values."
      osx
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
+     (python :variables
+             python-shell-completion-native nil
+             python-test-runner 'pytest
+             python-enable-yapf-format-on-save t
+             python-sort-imports-on-save t)
+     ipython-notebook
      semantic
      cscope
      ;; version-control
@@ -359,10 +365,16 @@ you should place your code here."
   ;;change the default value of company variables
   (setq-default company-idle-delay 0)
   (setq-default company-minimum-prefix-length 1)
+
+  ;;auto-open smartparens-mode in python-mode
+  (add-hook 'python-mode-hook 'smartparens-mode)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-(load custom-file 'no-error 'no-message)
+
+;; load custom-file without error and message
+;; (load custom-file 'no-error 'no-message)

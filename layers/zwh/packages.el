@@ -30,7 +30,7 @@
 ;;; Code:
 
 (defconst zwh-packages
-  '()
+  '(indent-guide)
   "The list of Lisp packages required by the zwh layer.
 
 Each entry is either:
@@ -57,5 +57,12 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+
+(defun zwh/post-init-indent-guide()
+  (use-package indent-guide
+    :init
+    (indent-guide-global-mode)
+    (setq indent-guide-delay 0)
+    ))
 
 ;;; packages.el ends here
