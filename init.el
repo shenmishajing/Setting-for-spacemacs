@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     html
      javascript
      python
      ;; ----------------------------------------------------------------
@@ -369,6 +370,8 @@ you should place your code here."
   ;;auto-open smartparens-mode in python-mode
   (add-hook 'python-mode-hook 'smartparens-mode)
 
+  ;;auto-close orgtbl-mode in markdown-mode
+  (add-hook 'markdown-mode-hook 'orgtbl-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
