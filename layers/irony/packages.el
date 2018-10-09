@@ -74,7 +74,7 @@ Each entry is either:
     	(add-hook 'objc-mode-hook 'irony-mode))
     :config
     (progn
-      (setq irony-user-dir (f-slash (f-join user-home-directory "bin" "irony")))
+      (setq irony-user-dir (f-slash (f-join user-home-directory ".spacemacs.d" "layers" "irony")))
       (setq irony-server-install-prefix irony-user-dir)
       ;; set search directory
       (setq irony-cdb-search-directory-list '("." "build"  "~/Project/" "~/.spacemacs.d/layers/irony/build_irony/"))

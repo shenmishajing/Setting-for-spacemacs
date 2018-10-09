@@ -54,7 +54,9 @@ values."
      emacs-lisp
      git
      (markdown :variables markdown-live-preview-engine 'vmd)
-     org
+     (org :variables
+          org-enable-github-support t
+          org-projectile-file "TODOs.org")
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -71,6 +73,7 @@ values."
              python-test-runner 'pytest
              python-enable-yapf-format-on-save t
              python-sort-imports-on-save t)
+     Verilog
      ipython-notebook
      semantic
      cscope
@@ -370,8 +373,18 @@ you should place your code here."
   ;;auto-open smartparens-mode in python-mode
   (add-hook 'python-mode-hook 'smartparens-mode)
 
-  ;;auto-close orgtbl-mode in markdown-mode
-  (add-hook 'markdown-mode-hook 'orgtbl-mode)
+  "The TODO files are not added to the agenda automatically. You can do this with
+  the following snippet. Note that this may have unintended consequences until
+  [[https://github.com/IvanMalison/org-projectile/issues/10][this bug]] is fixed."
+  (with-eval-after-load 'org-agenda
+    (require 'org-projectile)
+    (push (org-projectile:todo-files) org-agenda-files))
+
+  "To temporarily enable mode line display of org clock, press ~SPC t m c~.
+
+  To permanently enable mode line display of org clock, add this snippet to your
+  =dotspacemacs/user-config= function:"
+  (setq spaceline-org-clock-p t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -380,4 +393,4 @@ you should place your code here."
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 
 ;; load custom-file without error and message
-;; (load custom-file 'no-error 'no-message)
+(load custom-file)
