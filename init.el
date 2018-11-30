@@ -31,9 +31,15 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     octave
+     ruby
+     yaml
      html
      javascript
-     python
+     (python :variables
+             python-enable-yapf-format-on-save t
+             python-fill-column 80
+             python-sort-imports-on-save t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -344,7 +350,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   "fix the PATH warning bug"
   (setq exec-path-from-shell-arguments '("-l"))
-
   )
 
 (defun dotspacemacs/user-config ()
@@ -356,9 +361,9 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   ;;fix the stuck problem in elisp mode
-  (setq company-backends-emacs-lisp-mode '(company-bbdb company-eclim company-semantic company-clang company-xcode company-cmake company-files
-                                                        (company-dabbrev-code company-gtags company-etags company-keywords)
-                                                        company-oddmuse company-dabbrev))
+  ;;(setq company-backends-emacs-lisp-mode '(company-bbdb company-eclim company-semantic company-clang company-xcode company-cmake company-files
+                                                        ;;(company-dabbrev-code company-gtags company-etags company-keywords)
+                                                        ;;company-oddmuse company-dabbrev))
 
   ;;change the cursor type to bar
   (setq evil-emacs-state-cursor 'bar)
@@ -385,6 +390,9 @@ you should place your code here."
   To permanently enable mode line display of org clock, add this snippet to your
   =dotspacemacs/user-config= function:"
   (setq spaceline-org-clock-p t)
+
+  ;;delete Emacs.clr file to avoid error in Mojave
+  (delete-file "/Users/zwh/Library/Colors/Emacs.clr")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
