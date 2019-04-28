@@ -393,6 +393,9 @@ you should place your code here."
 
   ;;delete Emacs.clr file to avoid error in Mojave
   (delete-file "/Users/zwh/Library/Colors/Emacs.clr")
+
+  ;;fix NeoTree cannot print help window problem
+  (setq helm-split-window-inside-p t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
